@@ -226,10 +226,20 @@
                 />
             <ImageView
                 android:id="@+id/iv_captured"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+
+                 />
+            <Button
+                android:id="@+id/bt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:backgroundTint="@color/blue"
+                android:textSize="20dp"
+                android:text="Share"
+                android:onClick="email_clicked"
                 />
+
 
         </LinearLayout>
     </ScrollView>

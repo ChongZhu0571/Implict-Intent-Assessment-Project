@@ -6,6 +6,7 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     Button bt_start_time;
     Button bt_end_time;
     Button bt_capture;
+    Button bt_email;
     EditText txt_title;
     EditText txt_description;
     EditText txt_email;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         bt_start_time = findViewById(R.id.bt_start_time);
         bt_end_time = findViewById(R.id.bt_end_time);
         bt_capture = findViewById(R.id.bt_capture);
+        bt_email = findViewById(R.id.bt_email);
         photo = findViewById(R.id.iv_captured);
 
         //Let VM ignores the file URI exposure
@@ -163,11 +166,11 @@ public void end_time_picker(View view) {
         long beginDateTime = startDate.getTime();
         long endDateTime  = endDate.getTime();
         Button bt_addEvent = (Button)findViewById(R.id.bt_addEvent);
-        Calendar calendar = Calendar.getInstance();
+
+        //Calendar intent
         Intent intent = new Intent(Intent.ACTION_EDIT);
         intent.setType(type);
         intent.putExtra(CalendarContract.Events.TITLE,txt_title.getText().toString());
-        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,beginDateTime);
         intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endDateTime);
         intent.putExtra(CalendarContract.Events.ALL_DAY,((CheckBox) findViewById(R.id.bt_allday)).isChecked());
         intent.putExtra(CalendarContract.Events.DESCRIPTION,txt_description.getText().toString());
@@ -200,5 +203,13 @@ public void end_time_picker(View view) {
             photo.setImageBitmap(p);                            //display photo
         }
 
+    }
+
+    public void email_clicked(View view){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, txt_title.getText().toString());
+        intent.setType("text/plain");
+        Intent shareIntent = Intent.createChooser(intent,null);
+        startActivity(shareIntent);
     }
 }
