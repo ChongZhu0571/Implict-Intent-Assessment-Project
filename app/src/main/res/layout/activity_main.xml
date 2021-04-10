@@ -1,18 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="272dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Add Title"
+                android:paddingLeft="70dp"
+                android:paddingBottom="10dp"
+                android:textSize="40dp"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                >
+                <ImageView
+                    android:id="@+id/time_icon"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:src="@drawable/time"
+                    android:padding="7dp"
+                    />
+                <TextView
+                    android:id="@+id/txt_allday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="35dp"
+                    android:text="All-day"
+                    android:layout_toRightOf="@+id/time_icon"
+                    android:layout_marginLeft="2dp"
+                    />
+                <CheckBox
+                    android:id="@+id/bt_allday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:onClick="allday_clicked"
+                    />
+                <Button
+                    android:id="@+id/bt_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/time_icon"
+                    android:backgroundTint="@color/white"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:paddingLeft="50dp"
+                    android:text="Fri.,Apr.9, 2021"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:onClick="start_date_picker"
+                    />
+                <Button
+                    android:id="@+id/bt_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/bt_end_time"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@color/white"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:paddingLeft="50dp"
+                    android:text="18:30"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:onClick="start_time_picker"
+                    />
+                <Button
+                    android:id="@+id/bt_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bt_start_date"
+                    android:backgroundTint="@color/white"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:paddingLeft="50dp"
+                    android:text="Fri.,Apr.9, 2021"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:onClick="end_date_picker"
+                    />
+                <Button
+                    android:id="@+id/bt_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bt_start_date"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@color/white"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:paddingLeft="50dp"
+                    android:text="18:30"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:onClick="end_time_picker"
+                    />
+
+            </RelativeLayout>
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
+
+                <ImageView
+                    android:id="@+id/icon_description"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:src="@drawable/description"
+
+                    />
+                <EditText
+                    android:id="@+id/txt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/icon_description"
+                    android:hint="Add Description"
+                    android:textSize="40dp"
+                    android:layout_marginLeft="2dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
+                <ImageView
+                    android:id="@+id/icon_email"
+                    android:layout_width="@android:dimen/app_icon_size"
+                    android:layout_height="@android:dimen/app_icon_size"
+                    android:src="@drawable/email"
+                    android:padding="7dp"
+                    />
+                <EditText
+                    android:id="@+id/txt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/icon_email"
+                    android:hint="Add Emails"
+                    android:textSize="40dp"
+                    android:layout_marginLeft="2dp"
+                    />
+            </RelativeLayout>
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp">
+                <TextView
+                    android:id="@+id/txt_private"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Private"
+                    android:textSize="20dp"
+                    android:layout_centerVertical="true"
+                    />
+                <Switch
+                    android:id="@+id/bt_accessType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/txt_private"
+                    android:layout_marginLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:layout_centerVertical="true"
+                    />
+                <TextView
+                    android:id="@+id/txt_public"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="public"
+                    android:textSize="20dp"
+                    android:layout_toRightOf="@id/bt_accessType"
+                    android:layout_centerVertical="true"
+
+                    />
+                <Button
+                    android:id="@+id/bt_addEvent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@color/blue"
+                    android:text="Add Event"
+                    android:textSize="20dp"
+                    android:onClick="addEvent"
+                    />
+            </RelativeLayout>
+            <Button
+                android:id="@+id/bt_capture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Capture"
+                android:backgroundTint="@color/blue"
+                android:textSize="20dp"
+                android:onClick="capture_clicked"
+                />
+            <ImageView
+                android:id="@+id/iv_captured"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
